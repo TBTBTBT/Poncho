@@ -40,9 +40,25 @@ public class TimelineManager : MonoBehaviour {
 	bool NextPage(int num){
 		if (num == 0) {
 			if (Talk.Count > nowPage) {
-				if(Talk [nowPage].left)left.sprite = Talk [nowPage].left;
-				if(Talk [nowPage].right)right.sprite = Talk [nowPage].right;
-				text.text = Talk [nowPage].text;
+                if (Talk[nowPage].left)
+                {
+                    left.sprite = Talk[nowPage].left;
+                    left.gameObject.SetActive(true);
+                }
+                else
+                {
+                    left.gameObject.SetActive(false);
+                }
+                if (Talk[nowPage].right)
+                {
+                    right.sprite = Talk[nowPage].right;
+                    right.gameObject.SetActive(true);
+                }
+                else
+                {
+                    right.gameObject.SetActive(false);
+                }
+                text.text = Talk [nowPage].text;
 				nowPage++;
 				return true;
 			}
