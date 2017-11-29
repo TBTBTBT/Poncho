@@ -64,13 +64,28 @@ public class ShootingBulletBase : UtilityBehaviour {
 		if (!isLookPlayer) transform.localRotation = Quaternion.AngleAxis(direction-90, new Vector3(0, 0, 1));
 		else AimPlayer(transform.position);
 	}
-	void AimPlayer(Vector2 pos){
+    public void Set(float ang, Vector2 pos,bool isAim)
+    {
+        direction = ang;
+        transform.position = pos;
+        isAimPlayer = isAim;
+        //		Debug.Log(transform.position);
+        if (!isLookPlayer) transform.localRotation = Quaternion.AngleAxis(direction - 90, new Vector3(0, 0, 1));
+        else {
+            AimPlayer(transform.position);
+            direction += ang;
+            transform.localRotation = Quaternion.AngleAxis(direction - 90, new Vector3(0, 0, 1));
+
+
+        };
+    }
+    void AimPlayer(Vector2 pos){
         if (player)
         {
-			Debug.Log(pos);
+			//Debug.Log(pos);
             direction = GetAim(pos, player.transform.position);
             transform.localRotation = Quaternion.AngleAxis(direction - 90, new Vector3(0, 0, 1));
-			Debug.Log(direction);
+		//	Debug.Log(direction);
         }
     }
 	// Update is called once per frame
