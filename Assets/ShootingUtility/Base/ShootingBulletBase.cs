@@ -68,7 +68,7 @@ public class ShootingBulletBase : UtilityBehaviour {
     {
         direction = ang;
         transform.position = pos;
-        isAimPlayer = isAim;
+        isLookPlayer = isAim;
         //		Debug.Log(transform.position);
         if (!isLookPlayer) transform.localRotation = Quaternion.AngleAxis(direction - 90, new Vector3(0, 0, 1));
         else {

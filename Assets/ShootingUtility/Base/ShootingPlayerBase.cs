@@ -37,7 +37,7 @@ public class ShootingPlayerBase : UtilityBehaviour
 		if (num == 0) {
 			if (beforetouch!= null) {
 				Vector2 newpos = TouchManager.Instance.GetTouchWorldPos(num);
-				transform.position += (Vector3)(newpos - beforetouch) * 1.5f;
+				transform.position += (Vector3)(newpos - beforetouch) * speed;
 			}
 			beforetouch = TouchManager.Instance.GetTouchWorldPos(num);
 			isTouch = true;

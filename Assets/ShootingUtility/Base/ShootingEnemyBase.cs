@@ -8,8 +8,8 @@ public class ShootingEnemyBase : UtilityBehaviour {
 	protected Vector2 move;
 	protected int button1 = 0;
 	protected int button2 = 0;
-	[Header("自機の速さ")]
-	public float speed = 1;
+//	[Header("自機の速さ")]
+//	public float speed = 1;
 	[Header("弾を設定")]
 	public GameObject bullet;
 	[Header("HP")]
@@ -66,7 +66,7 @@ public class ShootingEnemyBase : UtilityBehaviour {
 	}
 	void FixedUpdate()
 	{
-		Move();
+		//Move();
 		FixedUpdateLate ();
 		lifeTime--;
 		if (lifeTime < 0) {
@@ -75,7 +75,7 @@ public class ShootingEnemyBase : UtilityBehaviour {
 	}
 	void Move()
 	{
-		rigidbody.velocity = move * speed;
+	//	rigidbody.velocity = move * speed;
 	}
 		
 	void OnTriggerEnter2D(Collider2D c)

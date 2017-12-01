@@ -6,8 +6,9 @@ public class ShootingEnemy03 : ShootingEnemyBase {
 	TickEvent spanEv;
     ShootingPlayerBase player;
     public int span = 0;
-    public int radius = 360;
+    public float radius = 360;
     public int bulletNum = 10;
+	public bool isShotAimPlayer = true;
 	// Use this for initialization
 	protected override void Init(){
 		spanEv = new TickEvent (span);
@@ -23,12 +24,16 @@ public class ShootingEnemy03 : ShootingEnemyBase {
 	{
 		spanEv.Invoke ();
 	}
-    void ShotOne(float a,bool isAim)
+	void ShotOne(bool isAim,int num,float radius)
     {
+		
         if (bullet)
         {
-            GameObject go = Instantiate(bullet, transform.position, Quaternion.identity);
-            go.GetComponent<ShootingBulletBase>().Set(0, transform.position, isAim);
+			for (int i = 0; i < num; i++) {
+				float rad = -(radius/2) +((radius/(float)num)/2) + (float)i * (radius/(float)num);
+				GameObject go = Instantiate (bullet, transform.position, Quaternion.identity);
+				go.GetComponent<ShootingBulletBase> ().Set (rad, transform.position, isAim);
+			}
         }
 
         else
@@ -38,7 +43,7 @@ public class ShootingEnemy03 : ShootingEnemyBase {
     }
 	protected override void Shot()
 	{
-		
+		ShotOne (isShotAimPlayer, bulletNum, radius);
 	}
     float AimPlayer(Vector2 pos)
     {
