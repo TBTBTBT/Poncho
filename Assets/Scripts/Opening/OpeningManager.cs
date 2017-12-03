@@ -21,7 +21,6 @@ public class OpeningManager : MonoBehaviour {
 		
 	}
 	void GoNextPage(int num){
-		Debug.Log ("eee");
 		if (!NextPage (num)) {
 			SceneManager.LoadScene (sceneName);
 		}

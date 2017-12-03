@@ -16,6 +16,23 @@ public class Talk{
 		right = r;
 	}
 }
+[System.Serializable]
+public class Section{
+	public List<Talk> OpeningTalk;
+	PlayableDirector pd;
+	public TimelineManager next;
+	int nowPage = 0;
+	int nowState = 0;
+	public void Init(){
+	}
+	void GoNext(){
+		if (next) {
+			//next.Init();
+		}
+
+	}
+
+}
 public class TimelineManager : MonoBehaviour {
 	public List<Talk> Talk;// = new List<Talk> ();
 	public GameObject TalkSet;
@@ -23,13 +40,15 @@ public class TimelineManager : MonoBehaviour {
 	public Image right;
 	public Text text;
 	int nowPage = 0;
+	int nowState = 0;
 	PlayableDirector pd;
+	public GameObject boss;
 	// Use this for initialization
 	void Start () {
 		pd = GetComponent<PlayableDirector> ();
-		EventManager.OnTouchBegin.AddListener (GoNextPage);
-		GoNextPage (0);
-		StartCoroutine (Fade(new Vector2 (0, 0)));
+		//EventManager.OnTouchBegin.AddListener (GoNextPage);
+		//GoNextPage (0);
+		//StartCoroutine (Fade(new Vector2 (0, 0)));
 	}
 	void GoNextPage(int num){
 		if (!NextPage (num)) {
@@ -67,8 +86,18 @@ public class TimelineManager : MonoBehaviour {
 		return false;
 	}
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+		/*
+		if (pd.duration == pd.time) {
+		//	Debug.Log ("a");
+			if (nowState == 0) {
+				nowState++;
+			}
+		}
+*/
+		//if (pd.state == PlayState.Paused) {
+		//	Debug.Log ("a");
+		//}
 	}
 	IEnumerator Fade(Vector2 pos){
 		for (int i = 0; i < 30; i++) {

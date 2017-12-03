@@ -22,7 +22,7 @@ public class ShootingEnemyBase : UtilityBehaviour {
 	void Start()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
-		Debug.Log (transform.position);
+//		Debug.Log (transform.position);
 		Init();
 		move = new Vector2 (0, 0);
 	}
