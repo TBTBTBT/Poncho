@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootingBullet : ShootingBulletBase
 {
+	float angle = 0;
+	public GameObject looks;
     protected override void OnHitEnemy(ShootingEnemyBase enemy)
     {
        // Destroy(player.gameObject);
@@ -16,5 +18,9 @@ public class ShootingBullet : ShootingBulletBase
         player.Damage();
 		Hit ();
     }
+	protected override void UpdateLate(){
+		angle += 20;
+		if(looks)looks.transform.localRotation = Quaternion.AngleAxis (angle,new Vector3(0,0,1));
+	}
 
 }

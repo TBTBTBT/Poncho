@@ -36,10 +36,25 @@ public class ShootingPlayer : ShootingPlayerBase {
 		//for (int i = 0; i < 19; i++) {
 		//	Shot(-i * 10);
 		//}
-        Shot(0);
+		Shot2(0,new Vector2(0.01f,-0.1f));
+		Shot2(0,new Vector2(0.01f,0.1f));
+		Shot2(-30,new Vector2(0.01f,-0.1f));
+		Shot2(30,new Vector2(0.01f,0.1f));
        // Shot(-45);
         //Shot(-135);
     }
+	void Shot2(float angle,Vector2 pos)
+	{
+		if (bullet)
+		{
+			GameObject g = Instantiate(bullet, transform.position + (Vector3)pos, Quaternion.identity);
+			g.GetComponent<ShootingBulletBase>().Set(angle,transform.position + (Vector3)pos);
+		}
+		else
+		{
+			Debug.LogError("弾をセットしてください");
+		}
+	}
     //-----------------------------------------------------
     //Zキーの処理
     //-----------------------------------------------------

@@ -99,7 +99,10 @@ public class ShootingBulletBase : UtilityBehaviour {
         {
 			Hit ();
         }
+		UpdateLate ();
     }
+	protected virtual void UpdateLate(){
+	}
     protected virtual void OnHitEnemy(ShootingEnemyBase enemy)
     {
 
