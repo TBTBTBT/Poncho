@@ -21,6 +21,9 @@ public class ShootingBullet : ShootingBulletBase
 	protected override void UpdateLate(){
 		angle += 20;
 		if(looks)looks.transform.localRotation = Quaternion.AngleAxis (angle,new Vector3(0,0,1));
+		if(Mathf.Abs(transform.localPosition.x) > 2.8f || Mathf.Abs(transform.localPosition.y) > 1.6f){
+			Destroy(this.gameObject);
+		}
 	}
 
 }

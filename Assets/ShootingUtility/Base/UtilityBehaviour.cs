@@ -10,7 +10,6 @@ public class UtilityBehaviour : MonoBehaviour {
 		float dx = p2.x - p1.x;
 		float dy = p2.y - p1.y;
 		float rad = Mathf.Atan2(dy, dx);
-		Debug.Log(rad);
 		return rad * Mathf.Rad2Deg;
 	}
 }
